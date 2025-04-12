@@ -21,13 +21,15 @@
   </div>
 
   <div id="chatApp" style="display:none;">
-    <h3>Team Chat</h3>
+    <header>
+      <h2>💬 Team Chat</h2>
+    </header>
     <div id="chat"></div>
-    <input type="text" id="message" placeholder="Type a message" />
-    <input type="file" id="fileInput" />
-    <div>
+    <div id="inputArea">
+      <input type="text" id="message" placeholder="Type a message" />
+      <input type="file" id="fileInput" />
       <button onclick="sendMessage()">Send</button>
-      <button onclick="sendFile()">Send Attachment</button>
+      <button onclick="sendFile()">📎</button>
     </div>
   </div>
 
