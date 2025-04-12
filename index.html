@@ -8,9 +8,11 @@
   <style>
     * {
       box-sizing: border-box;
-    }
-    body {
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Inter', sans-serif;
       background-color: #e5ddd5;
       display: flex;
@@ -156,7 +158,6 @@
     </div>
   </div>
 
-  <script type="module" src="app.js"></script>
   <script>
     let username = "Anonymous";
 
@@ -181,6 +182,22 @@
     }
 
     window.getUsername = () => window.username || "Anonymous";
+
+    function sendMessage() {
+      const message = document.getElementById('message').value.trim();
+      if (message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', 'own');
+        messageElement.textContent = message;
+        document.getElementById('chat').appendChild(messageElement);
+        document.getElementById('message').value = '';
+      }
+    }
+
+    function sendFile() {
+      const fileInput = document.getElementById('fileInput');
+      fileInput.click();
+    }
   </script>
 </body>
 </html>
