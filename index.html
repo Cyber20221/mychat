@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Chat - WhatsApp Style</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="authScreen">
+    <h3>Enter Password</h3>
+    <input type="password" id="passwordInput" placeholder="Enter password" />
+    <button onclick="checkPassword()">Next</button>
+    <p id="error" style="color:red; display:none;">Incorrect password</p>
+  </div>
+
+  <div id="nameScreen" style="display:none;">
+    <h3>Enter Your Name</h3>
+    <input type="text" id="nameInput" placeholder="Enter your name" />
+    <button onclick="enterChat()">Join Chat</button>
+  </div>
+
+  <div id="chatApp" style="display:none;">
+    <h3>Team Chat</h3>
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Type a message" />
+    <input type="file" id="fileInput" />
+    <div>
+      <button onclick="sendMessage()">Send</button>
+      <button onclick="sendFile()">Send Attachment</button>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script>
+    let username = "Anonymous";
+
+    function checkPassword() {
+      const password = document.getElementById('passwordInput').value;
+      if (password === '3424') {
+        document.getElementById('authScreen').style.display = 'none';
+        document.getElementById('nameScreen').style.display = 'block';
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
+
+    function enterChat() {
+      const name = document.getElementById('nameInput').value.trim();
+      if (name) {
+        username = name;
+        window.username = username;
+        document.getElementById('nameScreen').style.display = 'none';
+        document.getElementById('chatApp').style.display = 'block';
+      }
+    }
+
+    window.getUsername = () => window.username || "Anonymous";
+  </script>
+</body>
+</html>
